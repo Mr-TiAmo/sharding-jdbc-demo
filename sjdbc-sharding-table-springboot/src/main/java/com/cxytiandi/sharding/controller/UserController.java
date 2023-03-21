@@ -24,8 +24,8 @@ public class UserController {
 		for (long i = 0; i < 100; i++) {
 			User user = new User();
 			user.setId(i);
-			user.setCity("深圳");
-			user.setName("李四");
+			user.setCity("深圳" + i);
+			user.setName("李四" + i);
 			userService.add(user);
 		}
 		return "success";
@@ -39,6 +39,11 @@ public class UserController {
 	@GetMapping("/users/query")
 	public Object get(String name) {
 		return userService.findByName(name);
+	}
+
+	@GetMapping("/userDtos")
+	public Object findUserDtoById() {
+		return userService.findUserDtos();
 	}
 	
 }

@@ -7,6 +7,13 @@
         <result column="city" property="city" jdbcType="VARCHAR" />
         <result column="name" property="name" jdbcType="VARCHAR" />
     </resultMap>
+
+    <resultMap id="resultMap" type="com.cxytiandi.sharding.po.UserDto">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="city" property="city" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="region" property="region" jdbcType="VARCHAR" />
+    </resultMap>
     
     <insert id="addUser">
         INSERT INTO user (
@@ -30,5 +37,8 @@
     <select id="findByName" resultMap="baseResultMap">
         SELECT u.* FROM user u WHERE u.name=#{name,jdbcType=VARCHAR}
     </select>
-    
+
+    <select id="findUserDtos" resultMap="resultMap">
+        SELECT u.*, l.region FROM user u left join loudong l on u.id = l.ld_num
+    </select>
 </mapper>

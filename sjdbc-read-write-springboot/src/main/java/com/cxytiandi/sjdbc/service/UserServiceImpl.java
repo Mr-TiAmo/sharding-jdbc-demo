@@ -14,13 +14,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
+	@Override
 	public List<User> list() {
 		// 强制路由主库
 		//HintManager.getInstance().setMasterRouteOnly();
 		return userRepository.list();
 	}
-
+	@Override
 	public Long add(User user) {
 		return userRepository.addUser(user);
 	}

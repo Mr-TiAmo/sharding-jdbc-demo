@@ -2,6 +2,7 @@ package com.cxytiandi.sharding.service;
 
 import java.util.List;
 
+import com.cxytiandi.sharding.po.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Override
 	public List<User> list() {
 		return userRepository.list();
 	}
 
+	@Override
 	public Long add(User user) {
 		return userRepository.addUser(user);
 	}
@@ -25,6 +28,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(Long id) {
 		return userRepository.findById(id);
+	}
+
+	@Override
+	public List<UserDto> findUserDtos() {
+		return userRepository.findUserDtos();
 	}
 
 	@Override

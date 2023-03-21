@@ -13,11 +13,11 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+	@Override
 	public List<User> list() {
 		return userRepository.list();
 	}
-
+	@Override
 	public Long add(User user) {
 		return userRepository.addUser(user);
 	}
